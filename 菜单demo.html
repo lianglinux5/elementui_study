@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>elementui-树递归</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/vue.js"></script>
+    <script src="./js/elementui.js"></script>
+</head>
+<body>
+    <template id="tmpl">
+          <div>
+             <template v-for="item in treedata">
+                <el-submenu :index="item.id" v-if="item.children">
+                   <span slot="title">{{item.name}}</span>
+                    <menu-tree :treedata="item.children"></menu-tree>
+                </el-submenu>
+                <el-menu-item :index="item.id" v-else>
+                   <span slot="title">{{item.name}}</span>
+                </el-menu-item>
+             </template>
+          </div>       
+    </template>
+    <div id="app" style="width: 900px">
+        <h1>{{msg}}</h1>
+        <el-menu>
+           <menu-tree :treedata='treeData'></menu-tree>
+        </el-menu>
+        
+    </div>
+    <script>
+        Vue.component('menu-tree',{
+            template:'#tmpl',
+            props:['treedata']
+        })
+    new Vue({
+      el: '#app',
+      methods:{
+      },
+      data: function() {
+        return {
+          msg:"Hello!Vue",
+           treeData:[
+             {
+               id:"1",
+               name:"菜单1",
+               children:[
+                  {id:"2",name:"菜单11",
+                   children:[
+                     {
+                       id:"3",name:"菜单12"
+                     }
+                   ] 
+                 }
+               ]
+             },
+             {
+               id:"4",name:"菜单2",children:[
+                  {id:"5",name:"菜单22",children:[
+                     {id:"6",name:"菜单23"}
+                  ]}
+               ]
+             }
+
+         ]
+        }
+      }
+    })
+    </script>
+</body>
+</html>
