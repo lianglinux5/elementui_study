@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="treeList">
+
+    </div>
+    <script>
+        var treeList=[
+           { id:0,name:'节点1',children:[
+                {id:1,parentId:0,name:"节点1-1"},
+                {id:2,parentId:0,name:"节点1-2"}
+            ]
+           },
+           {
+              id:3,name:"节点2",children:[
+                  {id:4,parentId:3,name:"节点2-1",children:[
+                       {
+                         id:5,parentId:4,name:"节点2-1-1",children:[
+                           {id:6,parentId:5,name:"节点2-1-1-1"},
+                           {id:7,parentId:5,name:"节点2-1-1-2"}
+                         ]  
+                       },{
+                          id:8,parentId:3,name:"节点2-1-2" 
+                       }
+                  ]}
+              ]   
+           }
+        ];
+
+       
+        var treeListDiv = document.getElementById("treeList")
+
+      /**
+       * 扁平化数组
+       */ 
+        function convertList1(treeList){
+            var newList=[];
+            for(let item of treeList){
+                newList.push({...item,children:[]})
+               if(item.children){
+                    newList= newList.concat(convertList(item.children))
+               }
+               
+            }
+            return newList;
+        }
+
+
+        /**
+         * 扁平化数组，使用reduce
+         */ 
+        function convertList(treeList){
+           return treeList.reduce((prev,next)=>{
+                  prev.push({...next,children:[]})
+                  if(next.children){
+                    prev=prev.concat(convertList(next.children))
+                  }           
+                 return  prev;
+        },[]);
+        }
+
+        function render(treeList=[]){
+          let newTreeList=convertList(treeList);
+          for(let item of newTreeList){
+              if(item.parentId==undefined){
+                  var div=document.createElement("div")
+                  div.setAttribute('id',`parent_${item.id}`)
+                  div.innerHTML=item.name
+                  treeListDiv.appendChild(div)
+              }else{
+                  var dom=document.createElement("div");
+                  dom.innerHTML=item.name
+                  dom.setAttribute('id',`parent_${item.id}`)
+                  document.getElementById(`parent_${item.parentId}`).appendChild(dom);
+              }
+          }
+        }
+         render(treeList)
+        
+    </script>
+</body>
+</html>

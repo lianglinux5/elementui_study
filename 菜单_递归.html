@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="treeList">
+
+    </div>
+    <script>
+        var treeList=[
+           {name:'节点1',children:[
+                {name:"节点1-1"},
+                {name:"节点1-2"}
+            ]
+           },
+           {
+              name:"节点2",children:[
+                  {name:"节点2-1",children:[
+                       {
+                         name:"节点2-1-1",children:[
+                           {name:"节点2-1-1-1"},
+                           {name:"节点2-1-1-2"}
+                         ]  
+                       },{
+                          name:"节点2-1-2" 
+                       }
+                  ]}
+              ]   
+           }
+        ];
+        var treeListDiv = document.getElementById("treeList")
+        function render(treeList=[]){
+            for(item of treeList){
+                renderItem(item)
+            }
+        }
+        function renderItem(item){
+            var div=document.createElement("div")
+            div.innerHTML = item.name
+            var childs = item.children;
+            if(childs){
+                for(let child of childs){
+                    div.appendChild(renderItem(child))
+                }
+            }
+            treeListDiv.appendChild(div)
+            return div;
+        }
+        render(treeList)
+    </script>
+</body>
+</html>
