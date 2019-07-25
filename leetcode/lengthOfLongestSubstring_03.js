@@ -1,7 +1,3 @@
-/**
- * 暴力破解，超时
- */
-//abccdefg
  var lengthOfLongestSubstring = function(s=''){
      var n = s.length
      var set = new Set();
@@ -13,13 +9,23 @@
             ans = Math.max(ans, j - i);
         }
         else {
-            set.delete(s[i++]);
+          set.delete(s[i++]); 
+            // 错误代码
+            // set = new Set();
+            // i=j
+            
+           
         }
     }
     return ans;
  }
- console.log(lengthOfLongestSubstring("abccbaaa"));
+ //pwwkew  dvdf abccdefg
+ console.log(lengthOfLongestSubstring("pwwkew"));
  
+/**
+ * 暴力破解，超时
+ */
+
  /*
 var lengthOfLongestSubstring = function(s=''){
    var n = s.length
