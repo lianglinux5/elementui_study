@@ -12,12 +12,13 @@
     </div>
     <script>
         var treeList=[
-           { id:0,name:'节点1',children:[
-                {id:1,parentId:0,name:"节点1-1"},
-                {id:2,parentId:0,name:"节点1-2"}
+          {id:0,name:'节点1',children:[
+                {id:1,name:"节点1-1",parentId:0},
+                {id:2,name:"节点1-2",parentId:0}
             ]
            },
            {
+
               id:3,name:"节点2",children:[
                   {id:4,parentId:3,name:"节点2-1",children:[
                        {
@@ -65,20 +66,46 @@
         },[]);
         }
 
+ function createParent(item){
+   var dom=document.createElement("li")
+   dom.setAttribute('id',`parent_${item.id}`)
+   dom.innerHTML=item.name
+   treeListDiv.appendChild(dom)
+ }
+
+        function createNode(item,type){
+            var dom=document.createElement(type);
+            dom.setAttribute('id',`parent_${item.id}`)
+            dom.innerHTML = item.name
+            return dom
+        }
+
         function render(treeList=[]){
           let newTreeList=convertList(treeList);
           for(let item of newTreeList){
               if(item.parentId==undefined){
-                  var div=document.createElement("div")
-                  div.setAttribute('id',`parent_${item.id}`)
-                  div.innerHTML=item.name
-                  treeListDiv.appendChild(div)
+                  var li = createNode(item,'li')
+                  treeListDiv.appendChild(li)
               }else{
-                  var dom=document.createElement("div");
-                  dom.innerHTML=item.name
-                  dom.setAttribute('id',`parent_${item.id}`)
-                  document.getElementById(`parent_${item.parentId}`).appendChild(dom);
-              }
+                   //找到父亲节点
+                   var parentDom = document.getElementById(`parent_${item.parentId}`);
+                   if(!parentDom){
+                        var li=createNode(item,'li')
+                        treeListDiv.appendChild(li)
+                    }else{
+                       var childLen = parentDom.children.length;
+                       if(!childLen){
+                          var ul = document.createElement("ul")
+                          var li = createNode(item,'li')
+                          ul.appendChild(li)
+                          parentDom.appendChild(ul)
+                       }else{
+                         var firstChild = parentDom.children[0];
+                         var li=createNode(item,'li')
+                         firstChild.appendChild(li)
+                       }
+                    }
+                 }  
           }
         }
          render(treeList)

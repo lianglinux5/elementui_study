@@ -39,12 +39,14 @@
             }
         }
         function renderItem(item){
-            var div=document.createElement("div")
+            var div=document.createElement("li")
             div.innerHTML = item.name
             var childs = item.children;
             if(childs){
+                var childDom=document.createElement("ul");
                 for(let child of childs){
-                    div.appendChild(renderItem(child))
+                    childDom.appendChild(renderItem(child))
+                    div.appendChild(childDom)
                 }
             }
             treeListDiv.appendChild(div)
