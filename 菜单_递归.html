@@ -38,19 +38,41 @@
                 renderItem(item)
             }
         }
+
+        /**
+         * 添加单击事件  
+         */
+        function addEvent(li){
+            li.addEventListener('click',function(event){
+                //阻止事件冒泡
+                event.stopPropagation();
+                var children=this.children
+                if(children && children.length){
+                    var style=children[0].style
+                    var display = style.display
+                    if(display==='none'){
+                        style.display='block'
+                    }else{
+                        style.display='none'
+                    }
+                } 
+            })
+        }
+
         function renderItem(item){
-            var div=document.createElement("li")
-            div.innerHTML = item.name
+            var li=document.createElement("li")
+            addEvent(li)
+            li.innerHTML = item.name
             var childs = item.children;
-            if(childs){
+            if(childs && childs.length){
                 var childDom=document.createElement("ul");
                 for(let child of childs){
                     childDom.appendChild(renderItem(child))
-                    div.appendChild(childDom)
+                    li.appendChild(childDom)
                 }
             }
-            treeListDiv.appendChild(div)
-            return div;
+            treeListDiv.appendChild(li)
+            return li;
         }
         render(treeList)
     </script>

@@ -1,6 +1,33 @@
 [TOC]
 # 2019
-# 07-22
+ 
+- 表格demo.html
+- 菜单demo.html
+- 菜单_递归.html
+- 菜单_非递归.html
+- menu_js
+  - 递归.js
+  - 非递归.js
+- leetcode
+  - twoSum_01.js
+  - addTwoNumbers_02.js
+  - lengthOfLongestSubstring_03.js
+
+ ## 07-26
+ - html菜单
+   - 给菜单添加单击事件
+   - 事件冒泡 
+
+## 07-25
+- html菜单
+  - 递归生成
+  - 非递归生成菜单
+    - 扁平数组 
+- LeetCode第三题_无重复字符串最大长度
+  -  lengthOfLongestSubstring_03.js  
+      
+
+## 07-22
 - 菜单生成
     - 递归
     - 非递归
@@ -13,11 +40,4 @@
 
   # LeetCode第一题
   node /Volumes/资料/学习资料/front_project/elementui_demo/leetcode/twoSum_01.js
-```    
-# 07-25
-- html菜单
-  - 递归生成
-  - 非递归生成菜单
-    - 扁平数组 
-- LeetCode第三题_无重复字符串最大长度
-  -  lengthOfLongestSubstring_03.js    
+``` 
