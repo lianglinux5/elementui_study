@@ -1,3 +1,16 @@
+function twoSum (nums, target) {
+  var map = {}
+  for (var i = 0; i < nums.length; i++) {
+    var num = target - nums[i]
+    if (map[num] !== undefined) {
+      return [map[num], i]
+    }
+    map[nums[i]] = i
+  }
+  return []
+}
+export default twoSum
+
 /**
  *  LeetCode 三中解法
  *
@@ -10,13 +23,12 @@ var twoSum=function(nums,target){
      for(var j=i+1;j<nums.length;j++){
         if(nums[i]+nums[j]===target){
             result.push(i,j);
-        } 
+        }
      }
    }
     return result;
 }
 */
-
 
 /*
 var twoSum=function(nums=[],target){
@@ -34,27 +46,7 @@ var twoSum=function(nums=[],target){
     return [];
 }
 */
-
-
-
-var twoSum = function(nums=[],target){
-    var map={};
-    for(var i=0;i<nums.length;i++){
-        var num = target-nums[i];
-        if(map[num]!=undefined){
-            return [map[num],i];
-        }
-        map[nums[i]]=i
-    }
-    return [];
-}
-
-
-
-console.log(twoSum([0,1,2,4,5],3));
-
-
-//测试性能
+// 测试性能
 
 /*
 var arr=[];
@@ -64,8 +56,7 @@ for(var i=0;i<7000000;i++){
     }else{
         arr[i]=0;
     }
-    
-    
+
 }
 var start = new Date().getTime();
 console.log(twoSum(arr,7000001));
