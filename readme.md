@@ -12,6 +12,7 @@
   - twoSum_01.js
   - addTwoNumbers_02.js
   - lengthOfLongestSubstring_03.js
+  - countBinarySubstrings_696.js
 
  ## 07-26
  - html菜单
@@ -20,8 +21,12 @@
 - jest测试
 
 ```
- # jest调试
- node --inspect-brk   /Volumes/资料/学习资料/front_project/elementui_study/leetcode/node_modules/jest-cli/bin/jest.js --runInBand ./test/twoSum.test.js
+ # windows
+ cd g:\workspace\elementui_study\leetcode
+ node --inspect-brk .\node_modules\jest\bin/jest.js  --runInBand  ./test/twoSum.test.js
+# mac
+ cd /Volumes/资料/学习资料/front_project/elementui_study/leetcode
+ node --inspect-brk   ./node_modules/jest-cli/bin/jest.js --runInBand ./test/twoSum.test.js
 ``` 
 
 ## 07-25
