@@ -17,6 +17,12 @@
  - html菜单
    - 给菜单添加单击事件
    - 事件冒泡 
+- jest测试
+
+```
+ # jest调试
+ node --inspect-brk   /Volumes/资料/学习资料/front_project/elementui_study/leetcode/node_modules/jest-cli/bin/jest.js --runInBand ./test/twoSum.test.js
+``` 
 
 ## 07-25
 - html菜单
