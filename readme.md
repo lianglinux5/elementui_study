@@ -47,3 +47,10 @@
   # LeetCode第一题
   node /Volumes/资料/学习资料/front_project/elementui_demo/leetcode/twoSum_01.js
 ``` 
+
+## 08-12
+- window.postMessage跨frame传递数据
+  - postMessage
+    - index.html:父页面像子页面传数据
+    - frame2.html:子页面像父页面传数据
+- es6_proxy学习

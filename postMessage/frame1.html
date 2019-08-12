@@ -1,0 +1,10 @@
+<div>
+    我是frame1
+</div>
+<script>
+    function receiveMessageFromIndex ( event ) {
+      console.log( 'receiveMessageFromIndex', event )
+    }
+    window.addEventListener("message", receiveMessageFromIndex, false);
+
+</script>
