@@ -45,7 +45,7 @@
             for(let item of treeList){
                 newList.push({...item,children:[]})
                if(item.children){
-                    newList= newList.concat(convertList(item.children))
+                    newList= newList.concat(convertList1(item.children))
                }
                
             }
