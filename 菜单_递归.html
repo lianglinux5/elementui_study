@@ -34,9 +34,11 @@
         ];
         var treeListDiv = document.getElementById("treeList")
         function render(treeList=[]){
+            let ul=document.createElement("ul");
             for(item of treeList){
-                renderItem(item)
+                ul.appendChild(renderItem(item));
             }
+            treeListDiv.appendChild(ul)
         }
 
         /**
@@ -71,7 +73,6 @@
                     li.appendChild(childDom)
                 }
             }
-            treeListDiv.appendChild(li)
             return li;
         }
         render(treeList)

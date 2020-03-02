@@ -1,4 +1,6 @@
 [TOC]
+# 2020
+- reduce_demo.js reduce学习
 # 2019
  
 - 表格demo.html
